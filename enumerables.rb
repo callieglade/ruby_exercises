@@ -19,7 +19,18 @@ module Enumerable
 
     def my_select(array)
         new_array = []
-        array.my_each {|x| new_array << x if yield(x)}
+        array.my_each {|item| new_array << item if yield(item)}
         return new_array
+    end
+
+    def my_all?(array)
+        array.my_each do |item|
+            if yield(item) == false
+                return false
+            else
+                next
+            end
+        end
+        return true
     end
 end
