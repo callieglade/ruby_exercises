@@ -33,4 +33,26 @@ module Enumerable
         end
         return true
     end
+
+    def my_any?(array)
+        array.my_each do |item|
+            if yield(item) == true
+                return true
+            else
+                next
+            end
+        end
+        return false
+    end
+
+    def my_none?(array)
+        array.my_each do |item|
+            if yield(item) == true
+                return false
+            else
+                next
+            end
+        end
+        return true
+    end
 end
