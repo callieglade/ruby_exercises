@@ -68,5 +68,13 @@ module Enumerable
       self.my_each {|item| new_array << yield(item)}
       return new_array
     end
+
+    def my_inject(init=0)
+      sum = 0
+      (init...self.length).my_each do |item|
+        sum = yield(sum, item)
+      end
+      return sum
+    end
   end
 end
