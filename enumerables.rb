@@ -70,13 +70,14 @@ module Enumerable
 
   def my_inject(init=0)
     sum = self[init]
-    (init+1...self.length).my_each do |item|
+    self.my_each_with_index do |item, idx|
+      next if idx <= init
       sum = yield(sum, item)
     end
     return sum
   end
+end
 
-  def multiply_els(array)
-    array.my_inject{|sum, item| sum *= item}
-  end
+def multiply_els(array)
+  array.my_inject{|sum, item| sum *= item}
 end
