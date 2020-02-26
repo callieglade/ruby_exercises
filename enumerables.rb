@@ -70,8 +70,8 @@ module Enumerable
     end
 
     def my_inject(init=0)
-      sum = 0
-      (init...self.length).my_each do |item|
+      sum = self[init]
+      (init+1...self.length).my_each do |item|
         sum = yield(sum, item)
       end
       return sum
